@@ -37,7 +37,7 @@ public class OrderBController implements BaseController {
 
     private double getOrderCost() {
         return model.getOrderCost(Integer.parseInt(data[1]),
-                Double.parseDouble(data[3]));
+                Double.parseDouble(data[2]));
     }
 
     private double getDeliveryCost() {
@@ -46,7 +46,7 @@ public class OrderBController implements BaseController {
     }
 
     private String formOutput() {
-        return "\nOrder " + data[0] + " cost is " + " " + orderCostRounded + "\nDelivery cost is " + currency +
+        return "\nOrder " + data[0] + " cost is" + " " + currency + " " + orderCostRounded + "\nDelivery cost is " + currency +
                 " " + deliveryCostRounded;
     }
 }
