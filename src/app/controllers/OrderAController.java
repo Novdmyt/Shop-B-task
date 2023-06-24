@@ -6,33 +6,36 @@ import app.utils.Constants;
 import app.utils.Rounder;
 import app.views.OrderView;
 
-public class OrderAController implements {
+public class OrderAController implements BaseController{
 
     private OrderView view;
     private OrderAModel model;
-    private String data;
+    private String[] data;
     private String costRounded;
+    private String currency;
 
     @Override
     public void handleData() {
         view = new OrderView();
         data = getData();
         model = new OrderAModel();
-        costRounded = Rounder.roundValue();
+        costRounded = Rounder.roundValue(getOrderCost());
         view.getOutput(formOutput());
+        currency = Constants.Currency();
     }
 
     private String[] getData() {
+        return view.getData();
 
     }
 
     private double getOrderCost() {
         return model.getOrderCost(Integer.parseInt(data[1]),
-                Double.parseDouble(data[0]));
+                Double.parseDouble(data[2]));
     }
 
     private String formOutput() {
-        return "\nOrder " + data[0] + " cost is " + Constants. +
+        return "\nOrder " + data[0] + " cost is " + currency +
                 " " + costRounded;
     }
 }
