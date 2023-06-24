@@ -20,7 +20,7 @@ public class OrderBController implements BaseController {
         view = new OrderView();
         data = getData();
         model = new OrderBModel();
-        currency = Constants.Currency();
+        currency = Constants.getCurrency();
 
         double orderCost = getOrderCost();
         orderCostRounded = Rounder.roundValue(orderCost);
